@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobBridge BD - Jobs, Skills and Career Growth</title>
+  <meta name="description" content="JobBridge BD connects Bangladeshi job seekers with verified jobs, CV tools, career guidance and company profiles.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="JobBridge BD home">
+      <span class="brand-mark">JB</span>
+      <span>
+        <strong>JobBridge</strong>
+        <small>Bangladesh Career Hub</small>
+      </span>
+    </a>
+    <nav class="main-nav" aria-label="Primary navigation">
+      <a href="#jobs">Jobs</a>
+      <a href="#companies">Companies</a>
+      <a href="#cv">CV Builder</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="ghost-btn" type="button" data-open-auth="login">Log in</button>
+      <button class="solid-btn" type="button" data-open-auth="signup">Sign up</button>
+    </div>
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Verified jobs, smarter career moves</span>
+        <h1>Find your next job with confidence.</h1>
+        <p>Search trusted openings, build a polished CV, compare companies and track every application from one clean dashboard.</p>
+        <form class="search-panel" id="heroSearch">
+          <label>
+            <span>Role or keyword</span>
+            <input type="search" id="keywordInput" placeholder="Frontend, Designer, Sales">
+          </label>
+          <label>
+            <span>Location</span>
+            <select id="locationInput">
+              <option value="">All Bangladesh</option>
+              <option>Dhaka</option>
+              <option>Chattogram</option>
+              <option>Sylhet</option>
+              <option>Remote</option>
+            </select>
+          </label>
+          <label>
+            <span>Job type</span>
+            <select id="typeInput">
+              <option value="">Any type</option>
+              <option>Full-time</option>
+              <option>Part-time</option>
+              <option>Remote</option>
+              <option>Internship</option>
+            </select>
+          </label>
+          <button class="solid-btn search-btn" type="submit">Search Jobs</button>
+        </form>
+        <div class="hero-stats" aria-label="Platform highlights">
+          <span><strong>2,400+</strong> active jobs</span>
+          <span><strong>650+</strong> hiring companies</span>
+          <span><strong>38k+</strong> candidate profiles</span>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="assets/jobbridge-hero.png" alt="Professionals exploring career opportunities on digital dashboards">
+      </div>
+    </section>
+
+    <section class="section strip" aria-label="Popular search categories">
+      <button class="chip active" type="button" data-category="All">All</button>
+      <button class="chip" type="button" data-category="Technology">Technology</button>
+      <button class="chip" type="button" data-category="Marketing">Marketing</button>
+      <button class="chip" type="button" data-category="Finance">Finance</button>
+      <button class="chip" type="button" data-category="Support">Support</button>
+      <button class="chip" type="button" data-category="Design">Design</button>
+    </section>
+
+    <section class="section split-layout" id="jobs">
+      <aside class="filter-panel" aria-label="Job filters">
+        <h2>Filter Jobs</h2>
+        <label>
+          Experience
+          <select id="experienceFilter">
+            <option value="">Any level</option>
+            <option>Entry</option>
+            <option>Mid</option>
+            <option>Senior</option>
+          </select>
+        </label>
+        <label>
+          Salary range
+          <select id="salaryFilter">
+            <option value="">Any salary</option>
+            <option value="30000">৳30k+</option>
+            <option value="60000">৳60k+</option>
+            <option value="100000">৳100k+</option>
+          </select>
+        </label>
+        <label class="check-row">
+          <input type="checkbox" id="verifiedFilter">
+          Verified companies only
+        </label>
+        <div class="saved-box">
+          <span>Saved jobs</span>
+          <strong id="savedCount">0</strong>
+        </div>
+      </aside>
+
+      <div class="jobs-area">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Live openings</span>
+            <h2>Recommended Jobs</h2>
+          </div>
+          <span class="result-count" id="resultCount">0 jobs found</span>
+        </div>
+        <div class="job-list" id="jobList"></div>
+      </div>
+    </section>
+
+    <section class="section companies" id="companies">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Trusted employers</span>
+          <h2>Top Hiring Companies</h2>
+        </div>
+        <a href="#jobs">View open roles</a>
+      </div>
+      <div class="company-grid">
+        <article class="company-card">
+          <span class="company-logo">NF</span>
+          <h3>NexusFin</h3>
+          <p>Fintech products, merchant payments and financial analytics.</p>
+          <strong>18 open roles</strong>
+        </article>
+        <article class="company-card">
+          <span class="company-logo alt">BM</span>
+          <h3>BrightMart</h3>
+          <p>Retail technology, warehouse operations and customer growth.</p>
+          <strong>24 open roles</strong>
+        </article>
+        <article class="company-card">
+          <span class="company-logo warm">CL</span>
+          <h3>CodeLayer</h3>
+          <p>Software engineering, QA automation and cloud delivery teams.</p>
+          <strong>31 open roles</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="section cv-zone" id="cv">
+      <div class="cv-copy">
+        <span class="eyebrow">Built-in CV builder</span>
+        <h2>Create a recruiter-ready CV in minutes.</h2>
+        <p>Fill in your details and JobBridge formats a clean profile summary you can send with applications.</p>
+        <ul>
+          <li>Professional summary with skills</li>
+          <li>Experience and education sections</li>
+          <li>One-click copy-ready preview</li>
+        </ul>
+      </div>
+      <form class="cv-builder" id="cvForm">
+        <label>Name <input required id="cvName" placeholder="Your full name"></label>
+        <label>Target role <input required id="cvRole" placeholder="Junior Web Developer"></label>
+        <label>Top skills <input required id="cvSkills" placeholder="HTML, CSS, JavaScript"></label>
+        <label>Experience <textarea required id="cvExperience" placeholder="Write two lines about your work or projects"></textarea></label>
+        <button class="solid-btn" type="submit">Generate Preview</button>
+        <output class="cv-preview" id="cvPreview">Your CV preview will appear here.</output>
+      </form>
+    </section>
+
+    <section class="section dashboard" id="dashboard">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Candidate dashboard</span>
+          <h2>Track every application clearly.</h2>
+        </div>
+      </div>
+      <div class="metric-grid">
+        <article><span>Applications</span><strong>14</strong><small>4 awaiting response</small></article>
+        <article><span>Interviews</span><strong>3</strong><small>Next: Thursday, 11:00 AM</small></article>
+        <article><span>Profile score</span><strong>86%</strong><small>Add portfolio for +8%</small></article>
+        <article><span>Saved jobs</span><strong id="dashboardSaved">0</strong><small>Synced from job list</small></article>
+      </div>
+      <div class="timeline">
+        <div><strong>Applied</strong><span>Frontend Intern at CodeLayer</span></div>
+        <div><strong>Shortlisted</strong><span>Support Specialist at BrightMart</span></div>
+        <div><strong>Interview</strong><span>UI Designer at PixelNest</span></div>
+      </div>
+    </section>
+
+    <section class="section guide-grid" aria-label="Career guides">
+      <article>
+        <span class="eyebrow">Guide</span>
+        <h3>How to write a fresher CV</h3>
+        <p>Use project work, certificates and measurable achievements even without formal job history.</p>
+      </article>
+      <article>
+        <span class="eyebrow">Interview</span>
+        <h3>Common interview questions</h3>
+        <p>Practice concise answers for strengths, salary expectations and problem-solving examples.</p>
+      </article>
+      <article>
+        <span class="eyebrow">Skills</span>
+        <h3>High-demand digital skills</h3>
+        <p>Web development, data analysis, digital marketing and customer success remain strong paths.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div>
+      <a class="brand footer-brand" href="#top">
+        <span class="brand-mark">JB</span>
+        <span><strong>JobBridge</strong><small>Career made simpler</small></span>
+      </a>
+      <p>Dhaka, Bangladesh · hello@jobbridge.bd · +880 1700 000000</p>
+    </div>
+    <form class="newsletter">
+      <label for="emailInput">Get weekly job alerts</label>
+      <div>
+        <input id="emailInput" type="email" placeholder="you@example.com">
+        <button class="solid-btn" type="submit">Subscribe</button>
+      </div>
+    </form>
+  </footer>
+
+  <dialog class="modal" id="applyModal">
+    <form method="dialog">
+      <button class="close-btn" aria-label="Close modal">×</button>
+      <span class="eyebrow">Quick apply</span>
+      <h2 id="modalTitle">Apply for job</h2>
+      <p id="modalCompany"></p>
+      <label>Your email <input type="email" placeholder="you@example.com" required></label>
+      <label>Short note <textarea placeholder="Why are you a strong fit?"></textarea></label>
+      <button class="solid-btn" value="sent">Submit Application</button>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="authModal">
+    <form method="dialog">
+      <button class="close-btn" aria-label="Close modal">×</button>
+      <span class="eyebrow" id="authMode">Account</span>
+      <h2>Continue with JobBridge</h2>
+      <label>Email <input type="email" placeholder="you@example.com" required></label>
+      <label>Password <input type="password" placeholder="••••••••" required></label>
+      <button class="solid-btn">Continue</button>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
