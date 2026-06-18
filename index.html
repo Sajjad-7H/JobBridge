@@ -3,262 +3,264 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JobBridge BD - Jobs, Skills and Career Growth</title>
-  <meta name="description" content="JobBridge BD connects Bangladeshi job seekers with verified jobs, CV tools, career guidance and company profiles.">
+  <meta name="theme-color" content="#15231c">
+  <meta name="description" content="FoodFinder helps you discover the best nearby restaurants, cafes and local food in Dhaka and Chittagong.">
+  <title>FoodFinder - Find good food nearby</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
   <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="JobBridge BD home">
-      <span class="brand-mark">JB</span>
-      <span>
-        <strong>JobBridge</strong>
-        <small>Bangladesh Career Hub</small>
-      </span>
+    <a class="brand" href="#top" aria-label="FoodFinder home">
+      <span class="brand-mark"><i data-lucide="utensils"></i></span>
+      <strong>FoodFinder</strong>
     </a>
+
     <nav class="main-nav" aria-label="Primary navigation">
-      <a href="#jobs">Jobs</a>
-      <a href="#companies">Companies</a>
-      <a href="#cv">CV Builder</a>
-      <a href="#dashboard">Dashboard</a>
-      <a href="#contact">Contact</a>
+      <a href="#discover">Discover</a>
+      <a href="#collections">Collections</a>
+      <a href="#how-it-works">How it works</a>
     </nav>
+
     <div class="header-actions">
-      <button class="ghost-btn" type="button" data-open-auth="login">Log in</button>
-      <button class="solid-btn" type="button" data-open-auth="signup">Sign up</button>
+      <button class="location-button" id="locationButton" type="button">
+        <i data-lucide="map-pin"></i>
+        <span id="currentLocation">Chittagong</span>
+        <i data-lucide="chevron-down"></i>
+      </button>
+      <button class="icon-button saved-header" type="button" aria-label="View saved restaurants" title="Saved restaurants">
+        <i data-lucide="heart"></i>
+        <span id="savedCount">0</span>
+      </button>
     </div>
-    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+
+    <button class="icon-button menu-button" type="button" aria-label="Open menu" aria-expanded="false">
+      <i data-lucide="menu"></i>
+    </button>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <span class="eyebrow">Verified jobs, smarter career moves</span>
-        <h1>Find your next job with confidence.</h1>
-        <p>Search trusted openings, build a polished CV, compare companies and track every application from one clean dashboard.</p>
-        <form class="search-panel" id="heroSearch">
-          <label>
-            <span>Role or keyword</span>
-            <input type="search" id="keywordInput" placeholder="Frontend, Designer, Sales">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-image" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=2000&q=88" alt="A colorful selection of freshly prepared dishes on a restaurant table">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <span class="eyebrow light"><i data-lucide="sparkles"></i> Great meals are closer than you think</span>
+        <h1 id="hero-title">Find food worth going out for.</h1>
+        <p>Discover top-rated restaurants, hidden local favorites and the perfect table near you.</p>
+
+        <form class="hero-search" id="heroSearch">
+          <label class="search-field">
+            <i data-lucide="search"></i>
+            <span class="sr-only">Search restaurants or cuisines</span>
+            <input id="searchInput" type="search" placeholder="Search food, cuisine or restaurant">
           </label>
-          <label>
-            <span>Location</span>
+          <label class="search-field location-field">
+            <i data-lucide="map-pin"></i>
+            <span class="sr-only">Location</span>
             <select id="locationInput">
-              <option value="">All Bangladesh</option>
-              <option>Dhaka</option>
-              <option>Chattogram</option>
-              <option>Sylhet</option>
-              <option>Remote</option>
+              <option value="">All locations</option>
+              <optgroup label="Chittagong">
+                <option value="city:Chittagong">All Chittagong</option>
+                <option>Agrabad</option>
+                <option>GEC Circle</option>
+                <option>Khulshi</option>
+                <option>Nasirabad</option>
+                <option>Patenga</option>
+                <option>Chawkbazar</option>
+                <option>Jamal Khan</option>
+                <option>Lalkhan Bazar</option>
+                <option>Panchlaish</option>
+              </optgroup>
+              <optgroup label="Dhaka">
+                <option value="city:Dhaka">All Dhaka</option>
+                <option>Dhanmondi</option>
+                <option>Gulshan</option>
+                <option>Banani</option>
+                <option>Uttara</option>
+                <option>Old Dhaka</option>
+              </optgroup>
             </select>
           </label>
-          <label>
-            <span>Job type</span>
-            <select id="typeInput">
-              <option value="">Any type</option>
-              <option>Full-time</option>
-              <option>Part-time</option>
-              <option>Remote</option>
-              <option>Internship</option>
-            </select>
-          </label>
-          <button class="solid-btn search-btn" type="submit">Search Jobs</button>
+          <button class="primary-button" type="submit">Find restaurants <i data-lucide="arrow-right"></i></button>
         </form>
-        <div class="hero-stats" aria-label="Platform highlights">
-          <span><strong>2,400+</strong> active jobs</span>
-          <span><strong>650+</strong> hiring companies</span>
-          <span><strong>38k+</strong> candidate profiles</span>
+
+        <div class="quick-links" aria-label="Popular searches">
+          <span>Popular:</span>
+          <button type="button" data-quick="Biryani">Biryani</button>
+          <button type="button" data-quick="Burgers">Burgers</button>
+          <button type="button" data-quick="Cafe">Cafes</button>
+          <button type="button" data-quick="Bangladeshi">Bangladeshi</button>
         </div>
-      </div>
-      <div class="hero-media">
-        <img src="assets/jobbridge-hero.png" alt="Professionals exploring career opportunities on digital dashboards">
       </div>
     </section>
 
-    <section class="section strip" aria-label="Popular search categories">
-      <button class="chip active" type="button" data-category="All">All</button>
-      <button class="chip" type="button" data-category="Technology">Technology</button>
-      <button class="chip" type="button" data-category="Marketing">Marketing</button>
-      <button class="chip" type="button" data-category="Finance">Finance</button>
-      <button class="chip" type="button" data-category="Support">Support</button>
-      <button class="chip" type="button" data-category="Design">Design</button>
+    <section class="cuisine-strip" id="collections" aria-label="Browse by cuisine">
+      <button class="cuisine active" type="button" data-cuisine="All"><span>🍽️</span>All</button>
+      <button class="cuisine" type="button" data-cuisine="Bangladeshi"><span>🍛</span>Bangladeshi</button>
+      <button class="cuisine" type="button" data-cuisine="Biryani"><span>🍚</span>Biryani</button>
+      <button class="cuisine" type="button" data-cuisine="Burgers"><span>🍔</span>Burgers</button>
+      <button class="cuisine" type="button" data-cuisine="Pizza"><span>🍕</span>Pizza</button>
+      <button class="cuisine" type="button" data-cuisine="Asian"><span>🍜</span>Asian</button>
+      <button class="cuisine" type="button" data-cuisine="Cafe"><span>☕</span>Cafes</button>
+      <button class="cuisine" type="button" data-cuisine="Dessert"><span>🍰</span>Desserts</button>
     </section>
 
-    <section class="section split-layout" id="jobs">
-      <aside class="filter-panel" aria-label="Job filters">
-        <h2>Filter Jobs</h2>
-        <label>
-          Experience
-          <select id="experienceFilter">
-            <option value="">Any level</option>
-            <option>Entry</option>
-            <option>Mid</option>
-            <option>Senior</option>
-          </select>
-        </label>
-        <label>
-          Salary range
-          <select id="salaryFilter">
-            <option value="">Any salary</option>
-            <option value="30000">৳30k+</option>
-            <option value="60000">৳60k+</option>
-            <option value="100000">৳100k+</option>
-          </select>
-        </label>
-        <label class="check-row">
-          <input type="checkbox" id="verifiedFilter">
-          Verified companies only
-        </label>
-        <div class="saved-box">
-          <span>Saved jobs</span>
-          <strong id="savedCount">0</strong>
-        </div>
-      </aside>
-
-      <div class="jobs-area">
+    <section class="discovery" id="discover">
+      <div class="results-column">
         <div class="section-heading">
           <div>
-            <span class="eyebrow">Live openings</span>
-            <h2>Recommended Jobs</h2>
+            <span class="eyebrow">Nearby and delicious</span>
+            <h2>Places you might love</h2>
+            <p id="resultCount">Discovering restaurants in Chittagong...</p>
           </div>
-          <span class="result-count" id="resultCount">0 jobs found</span>
+          <label class="sort-control">
+            <span>Sort by</span>
+            <select id="sortInput">
+              <option value="recommended">Recommended</option>
+              <option value="rating">Top rated</option>
+              <option value="distance">Nearest first</option>
+              <option value="price">Lowest price</option>
+            </select>
+          </label>
         </div>
-        <div class="job-list" id="jobList"></div>
-      </div>
-    </section>
 
-    <section class="section companies" id="companies">
-      <div class="section-heading">
-        <div>
-          <span class="eyebrow">Trusted employers</span>
-          <h2>Top Hiring Companies</h2>
+        <div class="filter-bar" aria-label="Restaurant filters">
+          <button class="filter-button" type="button" data-filter="open">
+            <i data-lucide="clock-3"></i> Open now
+          </button>
+          <button class="filter-button" type="button" data-filter="rating">
+            <i data-lucide="star"></i> 4.5+
+          </button>
+          <label class="filter-select">
+            <i data-lucide="wallet-cards"></i>
+            <select id="priceInput" aria-label="Price range">
+              <option value="">Any price</option>
+              <option value="1">৳ Budget</option>
+              <option value="2">৳৳ Moderate</option>
+              <option value="3">৳৳৳ Premium</option>
+            </select>
+          </label>
+          <label class="filter-select">
+            <i data-lucide="route"></i>
+            <select id="distanceInput" aria-label="Distance">
+              <option value="">Any distance</option>
+              <option value="1">Within 1 km</option>
+              <option value="3">Within 3 km</option>
+              <option value="5">Within 5 km</option>
+            </select>
+          </label>
+          <button class="clear-button" id="clearFilters" type="button">Clear</button>
         </div>
-        <a href="#jobs">View open roles</a>
-      </div>
-      <div class="company-grid">
-        <article class="company-card">
-          <span class="company-logo">NF</span>
-          <h3>NexusFin</h3>
-          <p>Fintech products, merchant payments and financial analytics.</p>
-          <strong>18 open roles</strong>
-        </article>
-        <article class="company-card">
-          <span class="company-logo alt">BM</span>
-          <h3>BrightMart</h3>
-          <p>Retail technology, warehouse operations and customer growth.</p>
-          <strong>24 open roles</strong>
-        </article>
-        <article class="company-card">
-          <span class="company-logo warm">CL</span>
-          <h3>CodeLayer</h3>
-          <p>Software engineering, QA automation and cloud delivery teams.</p>
-          <strong>31 open roles</strong>
-        </article>
-      </div>
-    </section>
 
-    <section class="section cv-zone" id="cv">
-      <div class="cv-copy">
-        <span class="eyebrow">Built-in CV builder</span>
-        <h2>Create a recruiter-ready CV in minutes.</h2>
-        <p>Fill in your details and JobBridge formats a clean profile summary you can send with applications.</p>
-        <ul>
-          <li>Professional summary with skills</li>
-          <li>Experience and education sections</li>
-          <li>One-click copy-ready preview</li>
-        </ul>
+        <div class="restaurant-list" id="restaurantList" aria-live="polite"></div>
       </div>
-      <form class="cv-builder" id="cvForm">
-        <label>Name <input required id="cvName" placeholder="Your full name"></label>
-        <label>Target role <input required id="cvRole" placeholder="Junior Web Developer"></label>
-        <label>Top skills <input required id="cvSkills" placeholder="HTML, CSS, JavaScript"></label>
-        <label>Experience <textarea required id="cvExperience" placeholder="Write two lines about your work or projects"></textarea></label>
-        <button class="solid-btn" type="submit">Generate Preview</button>
-        <output class="cv-preview" id="cvPreview">Your CV preview will appear here.</output>
-      </form>
-    </section>
 
-    <section class="section dashboard" id="dashboard">
-      <div class="section-heading">
-        <div>
-          <span class="eyebrow">Candidate dashboard</span>
-          <h2>Track every application clearly.</h2>
+      <aside class="map-panel" aria-label="Restaurant map">
+        <div class="map-topbar">
+          <span><i data-lucide="map"></i> Explore the area</span>
+          <button class="map-locate" id="mapLocate" type="button" title="Use my location">
+            <i data-lucide="locate-fixed"></i>
+          </button>
         </div>
-      </div>
-      <div class="metric-grid">
-        <article><span>Applications</span><strong>14</strong><small>4 awaiting response</small></article>
-        <article><span>Interviews</span><strong>3</strong><small>Next: Thursday, 11:00 AM</small></article>
-        <article><span>Profile score</span><strong>86%</strong><small>Add portfolio for +8%</small></article>
-        <article><span>Saved jobs</span><strong id="dashboardSaved">0</strong><small>Synced from job list</small></article>
-      </div>
-      <div class="timeline">
-        <div><strong>Applied</strong><span>Frontend Intern at CodeLayer</span></div>
-        <div><strong>Shortlisted</strong><span>Support Specialist at BrightMart</span></div>
-        <div><strong>Interview</strong><span>UI Designer at PixelNest</span></div>
-      </div>
+        <div class="map-canvas" id="mapCanvas">
+          <div class="road road-one"></div>
+          <div class="road road-two"></div>
+          <div class="road road-three"></div>
+          <span class="map-label label-one" id="mapLabelOne">Chittagong City</span>
+          <span class="map-label label-two" id="mapLabelTwo">GEC Circle</span>
+          <span class="user-pin" title="Your location"><i data-lucide="navigation"></i></span>
+          <div id="mapPins"></div>
+        </div>
+        <article class="map-selection" id="mapSelection" aria-live="polite">
+          <span class="eyebrow">Selected place</span>
+          <h3 id="mapSelectionName">Choose a restaurant</h3>
+          <p id="mapSelectionAddress">Click a restaurant name or map marker to show its location.</p>
+          <div class="map-selection-actions">
+            <button class="details-button" id="mapDetailsButton" type="button" disabled>View details</button>
+            <a class="directions-button" id="mapDirectionsLink" href="#" target="_blank" rel="noreferrer" aria-disabled="true">
+              <i data-lucide="navigation"></i> Directions
+            </a>
+          </div>
+        </article>
+      </aside>
     </section>
 
-    <section class="section guide-grid" aria-label="Career guides">
-      <article>
-        <span class="eyebrow">Guide</span>
-        <h3>How to write a fresher CV</h3>
-        <p>Use project work, certificates and measurable achievements even without formal job history.</p>
-      </article>
-      <article>
-        <span class="eyebrow">Interview</span>
-        <h3>Common interview questions</h3>
-        <p>Practice concise answers for strengths, salary expectations and problem-solving examples.</p>
-      </article>
-      <article>
-        <span class="eyebrow">Skills</span>
-        <h3>High-demand digital skills</h3>
-        <p>Web development, data analysis, digital marketing and customer success remain strong paths.</p>
-      </article>
+    <section class="how-it-works" id="how-it-works">
+      <div class="section-heading centered">
+        <span class="eyebrow">A better way to choose</span>
+        <h2>From craving to table in minutes</h2>
+      </div>
+      <div class="steps">
+        <article><span>01</span><i data-lucide="scan-search"></i><h3>Discover</h3><p>Search nearby places by dish, mood, cuisine or neighborhood.</p></article>
+        <article><span>02</span><i data-lucide="badge-check"></i><h3>Compare</h3><p>See honest ratings, price levels, photos and distance at a glance.</p></article>
+        <article><span>03</span><i data-lucide="calendar-check-2"></i><h3>Book</h3><p>Reserve your table instantly and get a confirmation before you go.</p></article>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer" id="contact">
+  <footer class="site-footer">
     <div>
       <a class="brand footer-brand" href="#top">
-        <span class="brand-mark">JB</span>
-        <span><strong>JobBridge</strong><small>Career made simpler</small></span>
+        <span class="brand-mark"><i data-lucide="utensils"></i></span>
+        <strong>FoodFinder</strong>
       </a>
-      <p>Dhaka, Bangladesh · hello@jobbridge.bd · +880 1700 000000</p>
+      <p>Helping Dhaka and Chittagong find their next favorite meal.</p>
     </div>
-    <form class="newsletter">
-      <label for="emailInput">Get weekly job alerts</label>
-      <div>
-        <input id="emailInput" type="email" placeholder="you@example.com">
-        <button class="solid-btn" type="submit">Subscribe</button>
-      </div>
-    </form>
+    <div class="footer-links">
+      <a href="#discover">Explore</a>
+      <a href="#collections">Cuisines</a>
+      <a href="mailto:hello@foodfinder.com">Contact</a>
+    </div>
+    <p class="copyright">© 2026 FoodFinder · Owner: Sajjad Hossen</p>
   </footer>
 
-  <dialog class="modal" id="applyModal">
-    <form method="dialog">
-      <button class="close-btn" aria-label="Close modal">×</button>
-      <span class="eyebrow">Quick apply</span>
-      <h2 id="modalTitle">Apply for job</h2>
-      <p id="modalCompany"></p>
-      <label>Your email <input type="email" placeholder="you@example.com" required></label>
-      <label>Short note <textarea placeholder="Why are you a strong fit?"></textarea></label>
-      <button class="solid-btn" value="sent">Submit Application</button>
+  <dialog class="booking-modal" id="bookingModal">
+    <form method="dialog" id="bookingForm">
+      <button class="icon-button modal-close" type="button" aria-label="Close"><i data-lucide="x"></i></button>
+      <span class="eyebrow">Reserve your table</span>
+      <h2 id="bookingTitle">Book a table</h2>
+      <p id="bookingMeta"></p>
+      <div class="form-grid">
+        <label>Name<input id="guestName" required placeholder="Your name"></label>
+        <label>Guests<select id="guestCount"><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6+ guests</option></select></label>
+        <label>Date<input id="bookingDate" type="date" required></label>
+        <label>Time<select id="bookingTime"><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option><option>8:00 PM</option><option>8:30 PM</option></select></label>
+      </div>
+      <button class="primary-button full-button" type="submit" value="default">Confirm reservation</button>
+      <output id="bookingMessage"></output>
     </form>
   </dialog>
 
-  <dialog class="modal" id="authModal">
-    <form method="dialog">
-      <button class="close-btn" aria-label="Close modal">×</button>
-      <span class="eyebrow" id="authMode">Account</span>
-      <h2>Continue with JobBridge</h2>
-      <label>Email <input type="email" placeholder="you@example.com" required></label>
-      <label>Password <input type="password" placeholder="••••••••" required></label>
-      <button class="solid-btn">Continue</button>
-    </form>
+  <dialog class="details-modal" id="detailsModal">
+    <article>
+      <button class="icon-button details-close" type="button" aria-label="Close restaurant details"><i data-lucide="x"></i></button>
+      <img id="detailsImage" src="" alt="">
+      <div class="details-content">
+        <span class="eyebrow">Restaurant details</span>
+        <h2 id="detailsTitle"></h2>
+        <p class="details-address" id="detailsAddress"></p>
+        <div class="details-stats" id="detailsStats"></div>
+        <p class="details-description" id="detailsDescription"></p>
+        <div class="details-grid">
+          <div><span>Popular items</span><strong id="detailsItems"></strong></div>
+          <div><span>Opening hours</span><strong id="detailsHours"></strong></div>
+          <div><span>Service</span><strong id="detailsService"></strong></div>
+          <div><span>Contact</span><strong id="detailsPhone"></strong></div>
+        </div>
+        <div class="details-actions">
+          <a class="directions-button" id="detailsDirections" href="#" target="_blank" rel="noreferrer">
+            <i data-lucide="map-pinned"></i> Open in Google Maps
+          </a>
+          <button class="primary-button" id="detailsBookButton" type="button">Book a table</button>
+        </div>
+      </div>
+    </article>
   </dialog>
 
-  <script src="script.js"></script>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
